@@ -1,0 +1,26 @@
+{
+  "name": "evolve-maps",
+  "version": "0.0.0",
+  "authors": [
+    "Janus Hasseriis <janus@hasseriis.net>"
+  ],
+  "description": "A tool to quickly check maps for the game Evolve",
+  "main": "index.htm",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "Evolve"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.5.5"
+  }
+}

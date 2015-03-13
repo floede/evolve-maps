@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <title>Evolve Maps</title>
+
+  <meta name="viewport" 
+  content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+  <script src="bower_components/webcomponentsjs/webcomponents.js">
+  </script>
+
+  <link rel="import" href="elements/fonts/roboto.html">
+  <link rel="import" href="bower_components/core-header-panel/core-header-panel.html">
+  <link rel="import" href="bower_components/core-toolbar/core-toolbar.html">
+  <link rel="import" href="bower_components/paper-tabs/paper-tabs.html">
+  <link rel="import" href="bower_components/paper-input/paper-input.html">  
+  <link rel="import" href="bower_components/paper-dropdown-menu/paper-dropdown-menu.html">      
+
+  <style>
+  html,body {
+    height: 100%;
+    margin: 0;
+    background-color: #E5E5E5;
+    font-family: 'RobotoDraft', sans-serif;
+  }
+  core-header-panel {
+    height: 100%;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch; 
+  }
+  core-toolbar {
+    background: #03a9f4;
+    color: white;
+  }
+  #tabs {
+    width: 100%;
+    margin: 0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-transform: uppercase;
+  }
+  .container {
+    width: 80%;
+    margin: 50px auto;
+  }
+  @media (min-width: 481px) {
+    #tabs {
+      width: 200px;
+    }
+    .container {
+      width: 400px;
+    }
+  }
+  </style>
+
+</head>
+
+<body unresolved>
+  <core-header-panel>
+
+    <core-toolbar>
+
+      <paper-tabs id="tabs" selected="all" self-end>
+        <paper-tab name="all">Hunter</paper-tab>
+        <paper-tab name="favorites">Monster</paper-tab>
+      </paper-tabs>
+
+    </core-toolbar>
+      
+     
+      
+    <div id="set-selection">
+        Dropdown menu:
+<paper-dropdown-menu label="Pick a map set" relative="" layout="" inline="" horizontal="" center="" tabindex="0">
+    <paper-dropdown class="dropdown core-transition core-closed" tabindex="-1" style="outline: none; display: none;">
+        <core-menu class="menu">
+            <template repeat="{{pastries}}"></template>
+            <paper-item tabindex="0" class="core-selected" active="">Map set 1</paper-item>
+
+            <paper-item tabindex="0">Map set 2</paper-item>
+
+            <paper-item tabindex="0">Map set 3</paper-item>
+
+        </core-menu>
+    </paper-dropdown>
+</paper-dropdown-menu> 
+        
+        Input felt:
+        <paper-input label="Map" floatinglabel id="map_input"></paper-input> 
+    </div>
+
+    <div id="main-content">
+        
+        <!-- main page content will go here -->
+        
+    </div>
+      
+      
+  </core-header-panel>
+  
+  <script>
+    var tabs = document.querySelector('paper-tabs');
+    tabs.addEventListener('core-select', function() {
+      console.log("Selected: " + tabs.selected);
+    });
+  </script>
+</body>
+
+</html>
