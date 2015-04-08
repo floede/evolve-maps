@@ -1,0 +1,31 @@
+<head>
+  <title>Evolve Maps</title>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1>Evolve Maps!</h1>
+    </header>
+
+    <div class="mapContainer">
+      <a href="#">Previous</a>
+      <div class="showMap">
+        <div class="slideMaps">
+          {{#each maps}}
+            {{> map}}
+          {{/each}}
+        </div>
+      </div>
+      <a href="#">Next</a>
+    </div>
+  </div>
+</body>
+
+<template name="map">
+  <div class="map">
+    <h2>{{title}}</h2>
+    <img src="{{imgUrl}}">
+    <a href="{{imgSource}}">{{imgSource}}</a>
+  </div>
+</template>
