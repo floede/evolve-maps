@@ -9,18 +9,13 @@
       <h1>Evolve Maps!</h1>
     </header>
 
-
-    <div id="maps">
-
-    </div>
-
   </div>
 
     <div class="container">
         <!-- Jssor Slider Begin -->
         <!-- To move inline styles to css file/block, please specify a class name for each element. --> 
         <!-- ================================================== -->
-        <div id="slider1_container" style="display: none; position: relative; margin: 0 auto; width: 1140px; height: 442px; overflow: hidden;">
+        <div id="slider1_container" style="display: none; position: relative; margin: 0 auto; width: 100%; height: 100%; overflow: hidden;">
 
             <!-- Loading Screen -->
             <div u="loading" style="position: absolute; top: 0px; left: 0px;">
@@ -30,16 +25,19 @@
                 </div>
                 <div style="position: absolute; display: block; background: url(../img/loading.gif) no-repeat center center;
 
-                top: 0px; left: 0px;width: 100%;height:100%;">
+                top: 0px; left: 0px;width: auto;height:auto;">
                 </div>
             </div>
 
+            
             <!-- Slides Container -->
-            <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 1140px; height: 442px;
+            <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 100%; height: 100%;
             overflow: hidden;">
-              {{#each maps}}
-                {{> map}}
-              {{/each}}>
+
+                {{#each set.maps}}
+                    {{> map}}
+                {{/each}}
+
             </div>
             
             <!--#region Bullet Navigator Skin Begin -->
@@ -64,21 +62,14 @@
             <!--#endregion Arrow Navigator Skin End -->
         </div>
         <!-- Jssor Slider End -->
+        <div class="info">
+                <p>{{set.name}}</p>
+                <a href="{{set.source}}">{{set.source}}</a>                        
+        </div>
     </div>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <!-- script src="../js/jquery-1.9.1.min.js"></script -->
-    <!-- script src="bootstrap.min.js"></script -->
-    <!-- script src="docs.min.js"></script -->
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <!-- script src="ie10-viewport-bug-workaround.js"></script -->
-
-    <!-- jssor slider scripts-->
-    <!-- use jssor.js + jssor.slider.js instead for development -->
-    <!-- jssor.slider.mini.js = (jssor.js + jssor.slider.js) -->
-    <!-- script type="text/javascript" src="../js/jssor.slider.mini.js"></script -->
     <script>
 
         jQuery(document).ready(function ($) {
@@ -150,6 +141,5 @@
 <template name="map">
     <div>
         <img u="image" src2="{{imgUrl}}" alt="{{title}}" />
-    </div>
-    <a href="{{imgUrl}}" title="{{title}}">{{title}}</a>    
+    </div>  
 </template>
