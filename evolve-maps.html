@@ -1,5 +1,6 @@
 <head>
   <title>Evolve Maps</title>
+    <link href='http://fonts.googleapis.com/css?family=Oxygen:400,700,300' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
@@ -8,10 +9,18 @@
     <header>
       <h1>Evolve Maps!</h1>
     </header>
+      
+      <div class="navigation">
+        <form>
+            <select id="goto-map" class="form-control">
+                <option selected>Pick a map</option>
+                {{#each set.maps}}
+                    {{> select}}
+                {{/each}}
+            </select>
+        </form>
+    </div>
 
-  </div>
-
-    <div class="container">
         <!-- Jssor Slider Begin -->
         <!-- To move inline styles to css file/block, please specify a class name for each element. --> 
         <!-- ================================================== -->
@@ -66,6 +75,13 @@
                 <p>{{set.name}}</p>
                 <a href="{{set.source}}">{{set.source}}</a>                        
         </div>
+      
+      
+        <div class="footer">
+            <h3>Evolve Maps is build using:</h3>
+            <p>Meteor: <a href="http://www.meteor.com">www.meteor.com</a></p>
+            <p>Jssoor Slider: <a href="http://www.jssor.com/">www.jssor.com</a></p>
+      </div>
     </div>
 
     <!-- Bootstrap core JavaScript
@@ -133,7 +149,13 @@
             $(window).bind("resize", ScaleSlider);
             $(window).bind("orientationchange", ScaleSlider);
             //responsive code end
+            
+            $("#goto-map").change(function () {
+                jssor_slider1.$GoTo($(this).val()-1);
+            });            
+            
         });
+        
     </script>    
 
 </body>
@@ -142,4 +164,8 @@
     <div>
         <img u="image" src2="{{imgUrl}}" alt="{{title}}" />
     </div>  
+</template>
+
+<template name="select">
+    <option value="{{key}}">{{title}}</option> 
 </template>
