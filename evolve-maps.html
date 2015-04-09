@@ -3,29 +3,56 @@
 </head>
 
 <body>
+
+  <!-- The Gallery as inline carousel, can be positioned anywhere on the page -->
+  <div id="blueimp-gallery-carousel" class="blueimp-gallery blueimp-gallery-carousel">
+      <div class="slides"></div>
+      <h3 class="title"></h3>
+      <a class="prev">‹</a>
+      <a class="next">›</a>
+      <a class="play-pause"></a>
+      <ol class="indicator"></ol>
+  </div>
+
   <div class="container">
     <header>
       <h1>Evolve Maps!</h1>
     </header>
 
-    <div class="mapContainer">
-      <a href="#">Previous</a>
-      <div class="showMap">
-        <div class="slideMaps">
-          {{#each maps}}
-            {{> map}}
-          {{/each}}
-        </div>
-      </div>
-      <a href="#">Next</a>
+    <div id="links">
+        <a href="images/banana.jpg" title="Banana">
+            <img src="images/thumbnails/banana.jpg" alt="Banana">
+        </a>
+        <a href="images/apple.jpg" title="Apple">
+            <img src="images/thumbnails/apple.jpg" alt="Apple">
+        </a>
+        <a href="images/orange.jpg" title="Orange">
+            <img src="images/thumbnails/orange.jpg" alt="Orange">
+        </a>
     </div>
+
+    <div id="maps">
+      <!--{{#each maps}}
+        {{> map}}
+      {{/each}}-->
+    </div>
+
   </div>
+
+  <script>
+  blueimp.Gallery(
+      document.getElementById('links').getElementsByTagName('a'),
+      {
+          container: '#blueimp-gallery-carousel',
+          carousel: true
+      }
+  );
+  </script>
+
 </body>
 
 <template name="map">
-  <div class="map">
-    <h2>{{title}}</h2>
-    <img src="{{imgUrl}}">
-    <a href="{{imgSource}}">{{imgSource}}</a>
-  </div>
+    <a href="{{imgUrl}}" title="{{title}}">
+        <img src="{{imgUrl}}" alt="{{title}}">
+    </a>
 </template>
