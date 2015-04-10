@@ -1,7 +1,7 @@
 # Evolve Maps
 
 
-## Build using
+## Built using
 
 Meteor: http://www.meteor.com
 

@@ -4,6 +4,10 @@ body {
     font-family: 'Oxygen', sans-serif;
 }
 
+.img-wrap img {
+    height: auto !important;
+}
+
 /* jssor slider bullet navigator skin 05 css */
 /*
 .jssorb05 div           (normal)
