@@ -9,20 +9,26 @@
     <header>
       <h1>Evolve Maps!</h1>
     </header>
-      
+
+    {{#each mapsets}}
+      <p>Name: {{set.name}}</p><button class="delete">&times;</button>
+    {{/each}}
+
       <div class="navigation">
         <form>
             <select id="goto-map" class="form-control">
                 <option selected>Pick a map</option>
-                {{#each set.maps}}
+
+                  {{#each firstset.set.maps}}
                     {{> select}}
-                {{/each}}
+                  {{/each}}
+
             </select>
         </form>
     </div>
 
         <!-- Jssor Slider Begin -->
-        <!-- To move inline styles to css file/block, please specify a class name for each element. --> 
+        <!-- To move inline styles to css file/block, please specify a class name for each element. -->
         <!-- ================================================== -->
         <div id="slider1_container" style="display: none; position: relative; margin: 0 auto; width: 100%; height: 100%; overflow: hidden;">
 
@@ -36,17 +42,19 @@
                 </div>
             </div>
 
-            
+
             <!-- Slides Container -->
             <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 100%; height: 100%;
             overflow: hidden;">
 
-                {{#each set.maps}}
-                    {{> map}}
-                {{/each}}
+
+              {{#each firstset.set.maps}}
+                {{> map}}
+              {{/each}}
+
 
             </div>
-            
+
             <!--#region Bullet Navigator Skin Begin -->
             <!-- Help: http://www.jssor.com/development/slider-with-bullet-navigator-jquery.html -->
 
@@ -56,7 +64,7 @@
                 <div u="prototype"></div>
             </div>
             <!--#endregion Bullet Navigator Skin End -->
-            
+
             <!--#region Arrow Navigator Skin Begin -->
             <!-- Help: http://www.jssor.com/development/slider-with-arrow-navigator-jquery.html -->
 
@@ -71,10 +79,31 @@
         <!-- Jssor Slider End -->
         <div class="info">
                 <p>{{set.name}}</p>
-                <a href="{{set.source}}">{{set.source}}</a>                        
+                <a href="{{set.source}}">{{set.source}}</a>
         </div>
-      
-      
+
+
+        <div class="addMaps">
+          <form class="new-mapset">
+            <input type="text" name="name" placeholder="Give the set a name" />
+            <input type="text" name="keywords" placeholder="Buffs, callouts, caves etc">
+            <input type="text" name="source" placeholder="Where are the maps from?">
+            <input type="text" name="armory" placeholder="Armory">
+            <input type="text" name="aviary" placeholder="Aviary">
+            <input type="text" name="barracks" placeholder="Barracks">
+            <input type="text" name="thedam" placeholder="The Dam">
+            <input type="text" name="distillery" placeholder="Distillery">
+            <input type="text" name="fusionplant" placeholder="Fusion Plant">
+            <input type="text" name="medlab" placeholder="Med Lab">
+            <input type="text" name="orbitaldrill" placeholder="Orbital Drill">
+            <input type="text" name="renderingplant" placeholder="Rendering Plant">
+            <input type="text" name="refuelingtower" placeholder="Refueling Tower">
+            <input type="text" name="weathercontrol" placeholder="Weather Control">
+            <input type="text" name="wraithtrap" placeholder="Wraith Trap">
+            <button class="submit-maps" type="submit">Submit maps</button>
+          </form>
+        </div>
+
         <div class="footer">
             <h3>Evolve Maps is built using:</h3>
             <p>Meteor: <a href="http://www.meteor.com">www.meteor.com</a></p>
@@ -147,15 +176,15 @@
             $(window).bind("resize", ScaleSlider);
             $(window).bind("orientationchange", ScaleSlider);
             //responsive code end
-            
+
             $("#goto-map").change(function () {
                 jssor_slider1.$GoTo($(this).val()-1);
-            });            
-            
+            });
+
         });
-        
+
     </script>
-    
+
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -165,16 +194,16 @@
       ga('create', 'UA-61778035-1', 'auto');
       ga('send', 'pageview');
 
-    </script>    
+    </script>
 
 </body>
 
 <template name="map">
     <div class="img-wrap">
         <img u="image" src2="{{imgUrl}}" alt="{{title}}" />
-    </div>  
+    </div>
 </template>
 
 <template name="select">
-    <option value="{{key}}">{{title}}</option> 
+    <option value="{{key}}">{{title}}</option>
 </template>
